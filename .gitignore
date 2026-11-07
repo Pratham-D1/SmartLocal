@@ -1,0 +1,34 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Java build files
+target/
+*.class
+
+# Local database files
+data/*.mv.db
+data/*.trace.db
+data/*.lock.db
+
+# IDE settings
+.vscode/
+.idea/
+.settings/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Session cookies and sensitive files
+cookies.txt
+*.cookies

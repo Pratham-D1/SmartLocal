@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg sticky-top smart-navbar py-3">
+        <div class="container">
+            <!-- Brand Logo & Editorial Wordmark -->
+            <a class="navbar-brand d-flex align-items-center gap-2" th:href="@{/}">
+                <div class="rounded-circle bg-accent bg-opacity-10 text-accent p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; background-color: var(--accent-light); color: var(--accent);">
+                    <i class="bi bi-geo-alt-fill fs-5"></i>
+                </div>
+                <span class="brand-wordmark">Smart<span>Local</span></span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#smartNavbarContent" 
+                    aria-controls="smartNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="smartNavbarContent">
+                <!-- Navigation Links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAnonymous()">
+                        <a class="nav-link" th:href="@{/#nearby-shops}">Explore Shops</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('CUSTOMER')">
+                        <a class="nav-link" th:href="@{/customer/dashboard}">Explore Shops</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('RETAILER')">
+                        <a class="nav-link" th:href="@{/retailer/inventory}">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/#categories}">Categories</a>
+                    </li>
+                </ul>
+
+                <!-- Anonymous Options: Register Button (Login available directly on homepage) -->
+                <div sec:authorize="isAnonymous()" class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+                    <a th:href="@{/register}" class="btn btn-primary btn-sm px-4 fw-semibold rounded-pill">Register</a>
+                </div>
+
+                <!-- Authenticated Options: Profile & Dashboard -->
+                <div sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+                    <!-- Role-appropriate Dashboard Link -->
+                    <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/customer/dashboard}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                    </a>
+                    <a sec:authorize="hasRole('RETAILER')" th:href="@{/retailer/dashboard}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-shop me-1"></i> Dashboard
+                    </a>
+                    <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-shield-check me-1"></i> Dashboard
+                    </a>
+
+                    <!-- User Profile Pill -->
+                    <div class="d-flex align-items-center gap-2 bg-light border rounded-pill px-3 py-1 small text-secondary">
+                        <i class="bi bi-person-circle text-accent" style="color: var(--accent);"></i>
+                        <span sec:authentication="name" class="fw-semibold text-truncate" style="max-width: 140px;">User</span>
+                    </div>
+
+                    <!-- Logout Button -->
+                    <form th:action="@{/logout}" method="post" class="d-inline m-0">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm" title="Logout">
+                            <i class="bi bi-box-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Theme Selector (Light / Dark / System) -->
+                <div class="dropdown theme-selector-dropdown ms-lg-2 mt-2 mt-lg-0">
+                    <button class="btn btn-outline-secondary btn-sm rounded-pill px-2 py-1 d-inline-flex align-items-center gap-1" 
+                            type="button" id="themeDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false" title="Switch Theme">
+                        <i id="themeIconActive" class="bi bi-sun-fill text-warning"></i>
+                        <i class="bi bi-chevron-down opacity-50" style="font-size: 0.65rem;"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border rounded-3 p-1 mt-1" aria-labelledby="themeDropdownBtn" style="min-width: 140px;">
+                        <li>
+                            <button type="button" class="dropdown-item d-flex align-items-center gap-2 rounded-2 py-1 px-2 small" 
+                                    data-theme-value="light" onclick="setSmartLocalTheme('light')">
+                                <i class="bi bi-sun-fill text-warning"></i> Light
+                                <i class="bi bi-check2 ms-auto d-none theme-check-icon text-accent"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item d-flex align-items-center gap-2 rounded-2 py-1 px-2 small" 
+                                    data-theme-value="dark" onclick="setSmartLocalTheme('dark')">
+                                <i class="bi bi-moon-stars-fill" style="color: var(--accent);"></i> Dark
+                                <i class="bi bi-check2 ms-auto d-none theme-check-icon text-accent"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item d-flex align-items-center gap-2 rounded-2 py-1 px-2 small" 
+                                    data-theme-value="system" onclick="setSmartLocalTheme('system')">
+                                <i class="bi bi-circle-half text-secondary"></i> System
+                                <i class="bi bi-check2 ms-auto d-none theme-check-icon text-accent"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

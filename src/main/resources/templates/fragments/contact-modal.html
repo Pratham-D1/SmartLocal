@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Reusable Contact Retailer Modal Fragment -->
+<div th:fragment="contactModal">
+    <div class="modal fade" id="contactRetailerModal" tabindex="-1" aria-labelledby="contactRetailerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border shadow-lg rounded-4">
+                
+                <!-- Modal Header -->
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold text-dark" id="contactRetailerModalLabel">
+                        <i class="bi bi-chat-dots-fill text-primary me-2"></i>Contact Store
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body py-3">
+                    
+                    <!-- Store Profile & Location Information -->
+                    <div class="p-3 bg-light rounded-3 mb-3 border">
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <h6 class="fw-bold text-dark mb-0" id="modalShopName">Shop Name</h6>
+                            <span class="badge bg-success-subtle text-success small">Verified</span>
+                        </div>
+                        <div class="text-muted small mb-2">
+                            <i class="bi bi-geo-alt text-danger me-1"></i><span id="modalShopLocation">Store Location</span>
+                        </div>
+
+                        <!-- Retailer Contact Phone Display -->
+                        <div id="modalPhoneContainer" class="d-flex align-items-center gap-2 pt-2 border-top border-light-subtle small">
+                            <span class="text-muted">Phone:</span>
+                            <strong class="font-monospace text-dark" id="modalPhoneDisplay">+91 98765 43210</strong>
+                        </div>
+
+                        <!-- Missing Contact Details Alert -->
+                        <div id="modalNoPhoneAlert" class="alert alert-warning small py-1 px-2 mt-2 mb-0 d-none">
+                            <i class="bi bi-telephone-x me-1 text-danger"></i>No phone number listed.
+                        </div>
+
+                        <!-- Product Information Context -->
+                        <div id="modalProductInquiryRow" class="mt-2 pt-2 border-top border-light-subtle d-none">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="small text-secondary fw-semibold" id="modalProductName">Product</span>
+                                <span id="modalProductPriceBadge" class="badge bg-primary text-white font-monospace small">&#8377;0</span>
+                            </div>
+                            <div class="small text-muted mt-1" id="modalProductStatusText">In Stock</div>
+                        </div>
+                    </div>
+
+                    <!-- Prepopulated Message Preview Box -->
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <label for="modalMessageText" class="form-label small fw-semibold text-secondary mb-0">Message</label>
+                            <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 rounded-pill" style="font-size: 0.72rem;" onclick="copyModalMessage()">
+                                <i class="bi bi-clipboard me-1"></i><span id="copyBtnText">Copy</span>
+                            </button>
+                        </div>
+                        <textarea id="modalMessageText" class="form-control form-control-sm bg-white" rows="2" readonly></textarea>
+                    </div>
+
+                    <!-- Direct Action Buttons -->
+                    <div class="d-grid gap-2">
+                        <a id="modalCallBtn" href="tel:+919876543210" class="btn btn-primary btn-sm py-2 rounded-pill fw-semibold d-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-telephone-fill"></i>
+                            <span>Call <strong id="modalCallPhoneText">+91 98765 43210</strong></span>
+                        </a>
+                        <button id="modalCallDisabledBtn" class="btn btn-secondary btn-sm py-2 rounded-pill fw-semibold d-none" disabled>
+                            <i class="bi bi-telephone-x me-1"></i>Calling Unavailable
+                        </button>
+
+                        <a id="modalWhatsappBtn" href="#" target="_blank" class="btn btn-success btn-sm py-2 rounded-pill fw-semibold d-flex align-items-center justify-content-center gap-2 text-white">
+                            <i class="bi bi-whatsapp"></i>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                        <button id="modalWhatsappDisabledBtn" class="btn btn-outline-secondary btn-sm py-2 rounded-pill fw-semibold d-none" disabled>
+                            <i class="bi bi-whatsapp me-1"></i>WhatsApp Unavailable
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script powering the Contact Retailer modal -->
+    <script>
+        function openContactModal(shopName, phone, location, productName, priceText, stockText) {
+            document.getElementById('modalShopName').innerText = shopName || 'Local Retail Store';
+            document.getElementById('modalShopLocation').innerText = location || 'Demonstration Location';
+
+            const phoneContainer = document.getElementById('modalPhoneContainer');
+            const noPhoneAlert = document.getElementById('modalNoPhoneAlert');
+            const phoneDisplay = document.getElementById('modalPhoneDisplay');
+            const callBtn = document.getElementById('modalCallBtn');
+            const callDisabledBtn = document.getElementById('modalCallDisabledBtn');
+            const callPhoneText = document.getElementById('modalCallPhoneText');
+            const whatsappBtn = document.getElementById('modalWhatsappBtn');
+            const whatsappDisabledBtn = document.getElementById('modalWhatsappDisabledBtn');
+
+            // Determine if a valid telephone number is provided
+            const hasPhone = phone && phone.trim() !== '' && phone.trim() !== 'null' && phone.trim() !== 'undefined' && phone.trim().toLowerCase() !== 'not provided';
+
+            // Message text preparation
+            let message = '';
+            const inquiryRow = document.getElementById('modalProductInquiryRow');
+            const productNameSpan = document.getElementById('modalProductName');
+            const productPriceBadge = document.getElementById('modalProductPriceBadge');
+            const productStatusText = document.getElementById('modalProductStatusText');
+
+            if (productName && productName.trim() !== '') {
+                inquiryRow.classList.remove('d-none');
+                productNameSpan.innerText = productName;
+                if (priceText) {
+                    productPriceBadge.innerText = '₹' + priceText.toString().replace(/[^\d.]/g, '');
+                    productPriceBadge.classList.remove('d-none');
+                } else {
+                    productPriceBadge.classList.add('d-none');
+                }
+                productStatusText.innerText = stockText ? ('Status: ' + stockText) : 'Status: In Stock';
+                message = 'Hello, I found your shop on SmartLocal. Is ' + productName.trim() + ' currently available?';
+            } else {
+                inquiryRow.classList.add('d-none');
+                message = 'Hello ' + (shopName || 'Store') + ', I found your shop on SmartLocal. I would like to inquire about product availability and store hours.';
+            }
+
+            document.getElementById('modalMessageText').value = message;
+            document.getElementById('copyBtnText').innerText = 'Copy';
+
+            if (hasPhone) {
+                const trimmedPhone = phone.trim();
+                phoneContainer.classList.remove('d-none');
+                noPhoneAlert.classList.add('d-none');
+                phoneDisplay.innerText = trimmedPhone;
+
+                // Setup Telephone Call Link
+                const telClean = trimmedPhone.replace(/[^\d+]/g, '');
+                callBtn.href = 'tel:' + telClean;
+                callPhoneText.innerText = trimmedPhone;
+                callBtn.classList.remove('d-none');
+                callDisabledBtn.classList.add('d-none');
+
+                // Setup WhatsApp Click-to-Chat Link (wa.me / api.whatsapp.com)
+                let waDigits = trimmedPhone.replace(/\D/g, '');
+                if (waDigits.length === 10) {
+                    waDigits = '91' + waDigits;
+                }
+                whatsappBtn.href = 'https://api.whatsapp.com/send?phone=' + waDigits + '&text=' + encodeURIComponent(message);
+                whatsappBtn.classList.remove('d-none');
+                whatsappDisabledBtn.classList.add('d-none');
+            } else {
+                // Graceful fallback when contact details are missing
+                phoneContainer.classList.add('d-none');
+                noPhoneAlert.classList.remove('d-none');
+
+                callBtn.classList.add('d-none');
+                callDisabledBtn.classList.remove('d-none');
+
+                whatsappBtn.classList.add('d-none');
+                whatsappDisabledBtn.classList.remove('d-none');
+            }
+
+            const modal = new bootstrap.Modal(document.getElementById('contactRetailerModal'));
+            modal.show();
+        }
+
+        function copyModalMessage() {
+            const textarea = document.getElementById('modalMessageText');
+            textarea.select();
+            navigator.clipboard.writeText(textarea.value).then(function() {
+                document.getElementById('copyBtnText').innerText = 'Copied!';
+                setTimeout(function() {
+                    document.getElementById('copyBtnText').innerText = 'Copy';
+                }, 2000);
+            }).catch(function() {
+                document.execCommand('copy');
+                document.getElementById('copyBtnText').innerText = 'Copied!';
+            });
+        }
+    </script>
+</div>
+
+</body>
+</html>

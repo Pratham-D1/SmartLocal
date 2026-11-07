@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <footer th:fragment="footer" class="border-top mt-auto pt-5 pb-4" style="background-color: var(--bg-card);">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <!-- Col 1: Brand & Tagline -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" 
+                             style="width: 32px; height: 32px; background-color: var(--accent-light); color: var(--accent);">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        <span class="brand-wordmark" style="font-size: 1.25rem;">Smart<span>Local</span></span>
+                    </div>
+                    <p class="text-secondary small pe-lg-3">
+                        A curated hyperlocal discovery platform connecting neighborhood shoppers with verified local retail stores for real-time inventory and pricing.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold small text-uppercase mb-3" style="letter-spacing: 0.05em;">Explore</h6>
+                    <ul class="list-unstyled small mb-0 space-y-2">
+                        <li class="mb-2"><a th:href="@{/}" class="text-secondary text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a th:href="@{/#nearby-shops}" class="text-secondary text-decoration-none">Explore Shops</a></li>
+                        <li class="mb-2"><a th:href="@{/#categories}" class="text-secondary text-decoration-none">Categories</a></li>
+                        <li><a th:href="@{/login}" class="text-secondary text-decoration-none">Merchant Login</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Support & About -->
+                <div class="col-6 col-lg-3">
+                    <h6 class="fw-bold small text-uppercase mb-3" style="letter-spacing: 0.05em;">Support & About</h6>
+                    <ul class="list-unstyled small mb-0 space-y-2">
+                        <li class="mb-2"><a th:href="@{/#project-features}" class="text-secondary text-decoration-none">About SmartLocal</a></li>
+                        <li class="mb-2"><a th:href="@{/register}" class="text-secondary text-decoration-none">Register Store</a></li>
+                        <li><a href="mailto:support@smartlocal.com" class="text-secondary text-decoration-none"><i class="bi bi-envelope me-1"></i>Customer Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Service Locations -->
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold small text-uppercase mb-3" style="letter-spacing: 0.05em;">Service Areas</h6>
+                    <p class="small text-secondary mb-2">Active retail zones:</p>
+                    <div class="d-flex flex-wrap gap-1">
+                        <span class="badge border" style="background-color: var(--bg-subtle); color: var(--secondary-text);">Central Pune (FC Road)</span>
+                        <span class="badge border" style="background-color: var(--bg-subtle); color: var(--secondary-text);">East Pune (Viman Nagar)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Copyright & Legal Links -->
+            <div class="pt-3 border-top d-flex flex-column flex-sm-row justify-content-between align-items-center small text-secondary gap-2">
+                <span>&copy; 2026 SmartLocal. All rights reserved.</span>
+                <div class="d-flex gap-3">
+                    <a href="#termsModal" data-bs-toggle="modal" class="text-secondary text-decoration-none">Terms</a>
+                    <a href="#privacyModal" data-bs-toggle="modal" class="text-secondary text-decoration-none">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms Modal -->
+        <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border rounded-4 shadow-lg">
+                    <div class="modal-header border-bottom-0 pb-0">
+                        <h6 class="modal-title fw-bold">Terms of Service</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body small text-secondary py-3">
+                        SmartLocal connects local retail store inventories with customers. Prices and stock levels are maintained directly by verified merchants.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Modal -->
+        <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border rounded-4 shadow-lg">
+                    <div class="modal-header border-bottom-0 pb-0">
+                        <h6 class="modal-title fw-bold">Privacy Policy</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body small text-secondary py-3">
+                        Your location coordinates are processed strictly client-side or for temporary distance sorting. Retailer and customer personal contact info is protected by role-based access.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
