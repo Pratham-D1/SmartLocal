@@ -105,4 +105,3 @@
         updateDropdownUI(initialSetting, resolveTheme(initialSetting));
     }
 })();
-

@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  * Implementation of SearchSynonymService using an in-memory rule-based synonym dictionary.
- * 
+ *
  * TRANSPARENCY NOTICE:
  * This rule-based synonym dictionary provides deterministic keyword expansion for
  * demonstration and user convenience. It is NOT a trained machine-learning model.

@@ -19,12 +19,12 @@ public class DemoLocationDto {
     public DemoLocationDto() {
     }
 
-    public DemoLocationDto(String id, String name, String shortLabel, String landmark, 
+    public DemoLocationDto(String id, String name, String shortLabel, String landmark,
                            String city, String postalCode, String description, String demoCoordinates) {
         this(id, name, shortLabel, landmark, city, postalCode, description, demoCoordinates, null, null);
     }
 
-    public DemoLocationDto(String id, String name, String shortLabel, String landmark, 
+    public DemoLocationDto(String id, String name, String shortLabel, String landmark,
                            String city, String postalCode, String description, String demoCoordinates,
                            Double latitude, Double longitude) {
         this.id = id;

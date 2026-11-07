@@ -29,7 +29,7 @@ public class ShopSummaryDto {
     }
 
     public ShopSummaryDto(Long id, String name, String category, String locationId, String locationName,
-                          String address, String demoDistance, double rating, int totalProducts, 
+                          String address, String demoDistance, double rating, int totalProducts,
                           String contactNumber, String status, String badgeText) {
         this.id = id;
         this.name = name;

@@ -16,15 +16,15 @@
     --bg-card: #FFFFFF;
     --bg-elevated: #FDFCFA;
     --bg-subtle: #EFECE6;
-    
+
     --primary-text: #20201E;
     --secondary-text: #77736D;
     --text-muted: #77736D;
-    
+
     --border-base: #E6E1D9;
     --border-light: #EFECE6;
     --border-focus: #365D50;
-    
+
     /* Accent: #365D50 (Sophisticated forest/sage) */
     --accent: #365D50;
     --accent-hover: #264239;
@@ -36,7 +36,7 @@
     --primary-hover: #264239;
     --primary-light: rgba(54, 93, 80, 0.10);
     --primary-border: rgba(54, 93, 80, 0.22);
-    
+
     --navy: #20201E;
     --navy-light: #3D3B37;
     --text-primary: #20201E;
@@ -80,15 +80,15 @@
     --bg-card: #242320;
     --bg-elevated: #302E29;
     --bg-subtle: #302E29;
-    
+
     --primary-text: #F5F1E8;
     --secondary-text: #B8B1A5;
     --text-muted: #B8B1A5;
-    
+
     --border-base: #403D36;
     --border-light: #302E29;
     --border-focus: #9BBEAA;
-    
+
     /* Accent: #9BBEAA (Soft sage accent) */
     --accent: #9BBEAA;
     --accent-hover: #B4D1C1;
@@ -100,7 +100,7 @@
     --primary-hover: #B4D1C1;
     --primary-light: rgba(155, 190, 170, 0.14);
     --primary-border: rgba(155, 190, 170, 0.30);
-    
+
     --navy: #F5F1E8;
     --navy-light: #D5CEBF;
     --text-primary: #F5F1E8;
@@ -131,7 +131,7 @@
    ---------------------------------------------------------- */
 html {
     scroll-behavior: smooth;
-    transition: background-color var(--transition-speed) var(--transition-timing), 
+    transition: background-color var(--transition-speed) var(--transition-timing),
                 color var(--transition-speed) var(--transition-timing);
 }
 
@@ -143,7 +143,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    transition: background-color var(--transition-speed) var(--transition-timing), 
+    transition: background-color var(--transition-speed) var(--transition-timing),
                 color var(--transition-speed) var(--transition-timing);
 }
 
@@ -200,7 +200,7 @@ a:hover {
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border-base);
     box-shadow: 0 1px 3px rgba(32, 32, 30, 0.02);
-    transition: background-color var(--transition-speed) var(--transition-timing), 
+    transition: background-color var(--transition-speed) var(--transition-timing),
                 border-color var(--transition-speed) var(--transition-timing);
 }
 

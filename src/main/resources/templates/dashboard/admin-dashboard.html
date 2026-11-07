@@ -290,27 +290,27 @@
 
                 <!-- Sub-Filters for Shops -->
                 <div class="btn-group btn-group-sm" role="group">
-                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='all')}" 
+                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='all')}"
                        class="btn" th:classappend="${shopFilter == 'all'} ? 'btn-primary' : 'btn-outline-secondary'">
                         All (<span th:text="${stats.totalShops}">5</span>)
                     </a>
-                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='pending')}" 
+                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='pending')}"
                        class="btn" th:classappend="${shopFilter == 'pending'} ? 'btn-warning text-dark fw-bold' : 'btn-outline-secondary'">
                         Pending (<span th:text="${stats.pendingShops}">1</span>)
                     </a>
-                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='approved')}" 
+                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='approved')}"
                        class="btn" th:classappend="${shopFilter == 'approved'} ? 'btn-success' : 'btn-outline-secondary'">
                         Approved (<span th:text="${stats.approvedShops}">4</span>)
                     </a>
-                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='rejected')}" 
+                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='rejected')}"
                        class="btn" th:classappend="${shopFilter == 'rejected'} ? 'btn-danger' : 'btn-outline-secondary'">
                         Rejected (<span th:text="${stats.rejectedShops}">0</span>)
                     </a>
-                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='active')}" 
+                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='active')}"
                        class="btn" th:classappend="${shopFilter == 'active'} ? 'btn-info' : 'btn-outline-secondary'">
                         Active (<span th:text="${stats.activeShops}">5</span>)
                     </a>
-                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='inactive')}" 
+                    <a th:href="@{/admin/dashboard(tab='shops', shopFilter='inactive')}"
                        class="btn" th:classappend="${shopFilter == 'inactive'} ? 'btn-secondary' : 'btn-outline-secondary'">
                         Inactive (<span th:text="${stats.inactiveShops}">0</span>)
                     </a>
@@ -431,15 +431,15 @@
 
                 <!-- Sub-Filters for Users -->
                 <div class="btn-group btn-group-sm" role="group">
-                    <a th:href="@{/admin/dashboard(tab='users', userFilter='all')}" 
+                    <a th:href="@{/admin/dashboard(tab='users', userFilter='all')}"
                        class="btn" th:classappend="${userFilter == 'all'} ? 'btn-primary' : 'btn-outline-secondary'">
                         All (<span th:text="${allUsersCount}">6</span>)
                     </a>
-                    <a th:href="@{/admin/dashboard(tab='users', userFilter='customers')}" 
+                    <a th:href="@{/admin/dashboard(tab='users', userFilter='customers')}"
                        class="btn" th:classappend="${userFilter == 'customers'} ? 'btn-primary' : 'btn-outline-secondary'">
                         Customers (<span th:text="${stats.totalCustomers}">1</span>)
                     </a>
-                    <a th:href="@{/admin/dashboard(tab='users', userFilter='retailers')}" 
+                    <a th:href="@{/admin/dashboard(tab='users', userFilter='retailers')}"
                        class="btn" th:classappend="${userFilter == 'retailers'} ? 'btn-primary' : 'btn-outline-secondary'">
                         Retailers (<span th:text="${stats.totalRetailers}">4</span>)
                     </a>

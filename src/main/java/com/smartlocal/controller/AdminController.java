@@ -119,7 +119,7 @@ public class AdminController {
 
         try {
             Shop shop = adminService.approveShop(id, userDetails.getUsername());
-            redirectAttributes.addFlashAttribute("successMessage", 
+            redirectAttributes.addFlashAttribute("successMessage",
                     "Shop '" + shop.getShopName() + "' was successfully APPROVED and verified for public customer discovery!");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
@@ -138,7 +138,7 @@ public class AdminController {
 
         try {
             Shop shop = adminService.rejectShop(id, userDetails.getUsername());
-            redirectAttributes.addFlashAttribute("warningMessage", 
+            redirectAttributes.addFlashAttribute("warningMessage",
                     "Shop '" + shop.getShopName() + "' was REJECTED. It will be hidden from customer search results.");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
@@ -158,7 +158,7 @@ public class AdminController {
         try {
             Shop shop = adminService.toggleShopActive(id, userDetails.getUsername());
             String status = shop.isActive() ? "ACTIVATED" : "DEACTIVATED";
-            redirectAttributes.addFlashAttribute("successMessage", 
+            redirectAttributes.addFlashAttribute("successMessage",
                     "Shop '" + shop.getShopName() + "' has been " + status + ".");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
@@ -178,7 +178,7 @@ public class AdminController {
         try {
             User user = adminService.toggleUserStatus(id, userDetails.getUsername());
             String status = user.isEnabled() ? "ENABLED" : "DISABLED";
-            redirectAttributes.addFlashAttribute("successMessage", 
+            redirectAttributes.addFlashAttribute("successMessage",
                     "User account '" + user.getEmail() + "' has been " + status + ".");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());

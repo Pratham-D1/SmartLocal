@@ -243,9 +243,9 @@ public class CustomerProductServiceImpl implements CustomerProductService {
 
         for (ProductCardDto card : filtered) {
             // Strictly exclude out-of-stock or zero-quantity products from cheapest highlight
-            if (minAvailablePrice > 0 
-                    && card.isInStock() 
-                    && card.getStockQuantity() > 0 
+            if (minAvailablePrice > 0
+                    && card.isInStock()
+                    && card.getStockQuantity() > 0
                     && Math.abs(card.getPrice() - minAvailablePrice) < 0.001) {
                 card.setCheapestOption(true);
             } else {

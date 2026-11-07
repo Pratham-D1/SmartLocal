@@ -58,8 +58,8 @@
                             <!-- Shop Name -->
                             <div class="col-md-6">
                                 <label for="shopName" class="form-label small fw-semibold text-secondary">Shop Name *</label>
-                                <input type="text" id="shopName" th:field="*{shopName}" 
-                                       class="form-control" 
+                                <input type="text" id="shopName" th:field="*{shopName}"
+                                       class="form-control"
                                        th:classappend="${#fields.hasErrors('shopName')} ? 'is-invalid' : ''"
                                        placeholder="Shop name" required>
                                 <div th:if="${#fields.hasErrors('shopName')}" class="text-danger small mt-1" th:errors="*{shopName}"></div>
@@ -68,8 +68,8 @@
                             <!-- Owner Name -->
                             <div class="col-md-6">
                                 <label for="ownerName" class="form-label small fw-semibold text-secondary">Owner Name *</label>
-                                <input type="text" id="ownerName" th:field="*{ownerName}" 
-                                       class="form-control" 
+                                <input type="text" id="ownerName" th:field="*{ownerName}"
+                                       class="form-control"
                                        th:classappend="${#fields.hasErrors('ownerName')} ? 'is-invalid' : ''"
                                        placeholder="Owner name" required>
                                 <div th:if="${#fields.hasErrors('ownerName')}" class="text-danger small mt-1" th:errors="*{ownerName}"></div>
@@ -78,8 +78,8 @@
                             <!-- Contact Number -->
                             <div class="col-md-6">
                                 <label for="contactNumber" class="form-label small fw-semibold text-secondary">Phone *</label>
-                                <input type="tel" id="contactNumber" th:field="*{contactNumber}" 
-                                       class="form-control" 
+                                <input type="tel" id="contactNumber" th:field="*{contactNumber}"
+                                       class="form-control"
                                        th:classappend="${#fields.hasErrors('contactNumber')} ? 'is-invalid' : ''"
                                        placeholder="Phone" required>
                                 <div th:if="${#fields.hasErrors('contactNumber')}" class="text-danger small mt-1" th:errors="*{contactNumber}"></div>
@@ -104,15 +104,15 @@
                             <!-- Opening Hours -->
                             <div class="col-md-6">
                                 <label for="openingHours" class="form-label small fw-semibold text-secondary">Hours</label>
-                                <input type="text" id="openingHours" th:field="*{openingHours}" class="form-control" 
+                                <input type="text" id="openingHours" th:field="*{openingHours}" class="form-control"
                                        placeholder="e.g. 09:00 AM - 09:30 PM">
                             </div>
 
                             <!-- Physical Address -->
                             <div class="col-12">
                                 <label for="address" class="form-label small fw-semibold text-secondary">Address *</label>
-                                <input type="text" id="address" th:field="*{address}" 
-                                       class="form-control" 
+                                <input type="text" id="address" th:field="*{address}"
+                                       class="form-control"
                                        th:classappend="${#fields.hasErrors('address')} ? 'is-invalid' : ''"
                                        placeholder="Address" required>
                                 <div th:if="${#fields.hasErrors('address')}" class="text-danger small mt-1" th:errors="*{address}"></div>
@@ -121,7 +121,7 @@
                             <!-- Description -->
                             <div class="col-12">
                                 <label for="description" class="form-label small fw-semibold text-secondary">Description</label>
-                                <textarea id="description" th:field="*{description}" class="form-control" rows="3" 
+                                <textarea id="description" th:field="*{description}" class="form-control" rows="3"
                                           placeholder="Description"></textarea>
                             </div>
                         </div>

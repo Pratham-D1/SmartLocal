@@ -26,4 +26,3 @@ public interface EmailOtpRepository extends JpaRepository<EmailOtp, Long> {
     @Query("DELETE FROM EmailOtp o WHERE o.expiresAt < :cutoff")
     void deleteExpiredBefore(@Param("cutoff") LocalDateTime cutoff);
 }
-

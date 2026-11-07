@@ -132,7 +132,7 @@
                 <div class="col-md-5">
                     <div class="input-group">
                         <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-search"></i></span>
-                        <input type="text" name="query" class="form-control border-start-0" 
+                        <input type="text" name="query" class="form-control border-start-0"
                                placeholder="Search products" th:value="${searchQuery}">
                     </div>
                 </div>
@@ -206,8 +206,8 @@
 
                             <!-- Original Price / MRP -->
                             <td>
-                                <span class="text-muted small text-decoration-line-through" 
-                                      th:if="${product.originalPrice != null && product.originalPrice > product.price}" 
+                                <span class="text-muted small text-decoration-line-through"
+                                      th:if="${product.originalPrice != null && product.originalPrice > product.price}"
                                       th:text="'&#8377;' + ${#numbers.formatDecimal(product.originalPrice, 1, 2)}">&#8377;1199.00</span>
                                 <span class="text-muted small" th:unless="${product.originalPrice != null && product.originalPrice > product.price}">-</span>
                             </td>
@@ -282,7 +282,7 @@
                 <form th:action="@{/retailer/inventory/quick-update}" method="post">
                     <div class="modal-body py-3">
                         <input type="hidden" id="quickProductId" name="productId">
-                        
+
                         <div class="p-3 bg-light rounded-3 mb-3 border">
                             <span class="small text-muted d-block">Product:</span>
                             <strong class="text-dark" id="quickProductName">Product Name</strong>

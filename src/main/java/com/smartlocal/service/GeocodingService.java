@@ -24,4 +24,3 @@ public interface GeocodingService {
      */
     Optional<GeocodingResultDto> geocodeAddress(String address);
 }
-

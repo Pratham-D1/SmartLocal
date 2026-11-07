@@ -74,7 +74,7 @@ public class ShopServiceImpl implements ShopService {
         shop.setLocationId(dto.getLocationId().trim());
         shop.setLocationName(resolveLocationName(dto.getLocationId().trim()));
         shop.setDescription(dto.getDescription() != null ? dto.getDescription().trim() : "");
-        shop.setOpeningHours(dto.getOpeningHours() != null && !dto.getOpeningHours().trim().isEmpty() 
+        shop.setOpeningHours(dto.getOpeningHours() != null && !dto.getOpeningHours().trim().isEmpty()
                 ? dto.getOpeningHours().trim() : "09:00 AM - 09:00 PM");
 
         return shopRepository.save(shop);

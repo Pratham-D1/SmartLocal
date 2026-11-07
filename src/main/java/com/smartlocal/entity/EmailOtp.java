@@ -142,4 +142,3 @@ public class EmailOtp {
         return LocalDateTime.now().isAfter(expiresAt);
     }
 }
-

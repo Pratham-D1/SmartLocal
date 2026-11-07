@@ -72,4 +72,3 @@ public class GeocodingResultDto {
         this.longitude = longitude;
     }
 }
-
