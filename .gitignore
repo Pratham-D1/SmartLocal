@@ -32,3 +32,7 @@ Thumbs.db
 # Session cookies and sensitive files
 cookies.txt
 *.cookies
+
+# Generated dashboard HTML files
+login_out.html
+checkB.html
